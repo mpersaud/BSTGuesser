@@ -56,7 +56,16 @@ public class BinarySearchTree {
          **  YOUR CODE GOES HERE
          **
          **/
-        return current;
+
+        TreeNode node = searchHelper(current,value);
+
+        return node;
+    }
+    private TreeNode searchHelper(TreeNode node,int value){
+        if(node.getValue()==value)return node;
+        else if (value<node.getValue())return searchHelper(node.left,value);
+        else if(value>node.getValue())return searchHelper(node.right,value);
+        return node;
     }
 
     public void invalidateNode(int targetValue) {
