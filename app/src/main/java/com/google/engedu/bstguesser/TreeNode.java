@@ -20,6 +20,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 
+import org.w3c.dom.Node;
+
 public class TreeNode {
     private static final int SIZE = 60;
     private static final int MARGIN = 20;
@@ -43,6 +45,20 @@ public class TreeNode {
          **  YOUR CODE GOES HERE
          **
          **/
+
+        insertHelper(this,valueToInsert);
+    }
+    public TreeNode insertHelper(TreeNode n, int valueToInsert){
+
+        if(n==null){
+            n=new TreeNode(valueToInsert);
+            return n;
+        }
+
+        else if(valueToInsert<n.value)n.left= insertHelper(n.left,valueToInsert);
+        else if (valueToInsert>n.value)n.right=insertHelper(n.right,valueToInsert);
+
+        return n;
     }
 
     public int getValue() {
